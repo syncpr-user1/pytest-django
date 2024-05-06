@@ -1,4 +1,4 @@
-name: main
+name: recent_fail_order
 
 on:
   push:
@@ -52,7 +52,7 @@ jobs:
         if: always()
         uses: actions/cache/restore@v4
         with:
-          path: ${{ github.workspace }}/.tox/py312-dj50-postgres-xdist-coverage/.pytest_cache/v/pytest_ranking_data
+          path: ${{ github.workspace }}/.tox/recent_fail_order/.pytest_cache/v/pytest_ranking_data
           key: pytest-ranking-cache-${{ runner.os }}-${{ matrix.python }}
 
       - name: Run tox
@@ -63,7 +63,7 @@ jobs:
         if: always()
         uses: actions/cache/save@v4
         with:
-          path: ${{ github.workspace }}/.tox/py312-dj50-postgres-xdist-coverage/.pytest_cache/v/pytest_ranking_data
+          path: ${{ github.workspace }}/.tox/recent_fail_order/.pytest_cache/v/pytest_ranking_data
           key: pytest-ranking-cache-${{ runner.os }}-${{ matrix.python }}-${{ github.run_id }}
 
       # - name: Report coverage
@@ -79,7 +79,7 @@ jobs:
       matrix:
         #include:
         # - name: linting,docs
-        name: ['pytest-default-order']
+        name: ['recent_fail_order']
         python: ['3.12']
         allow_failure: [false]
 
