@@ -1,4 +1,4 @@
-recent_fail_ordername: change_first_order
+name: change_first_order
 
 on:
   push:
