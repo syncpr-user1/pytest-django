@@ -79,7 +79,7 @@ jobs:
       matrix:
         #include:
         # - name: linting,docs
-        name: [py312-dj50-postgres-xdist-coverage]
+        name: ['pytest-default-order']
         python: ['3.12']
         allow_failure: [false]
 
