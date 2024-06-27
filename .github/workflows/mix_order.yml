@@ -44,8 +44,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install tox==4.11.1
 
-      - name: Install pytest-ranking
-        run: pip install pytest-ranking
+      - name: Install pytest-ranking related
+        run: pip install pytest-ranking pytest-json-report
 
       - name: Restore pytest-ranking cache
         id: restore-pytest-ranking-cache
@@ -65,7 +65,12 @@ jobs:
         with:
           path: ${{ github.workspace }}/.tox/mix_order/.pytest_cache/v/pytest_ranking_data
           key: pytest-ranking-cache-${{ runner.os }}-${{ matrix.python }}-${{ github.run_id }}
-
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+            name: pytest-ranking upload test report json
+            path: |
+              ./test-report.json
       # - name: Report coverage
       #   if: contains(matrix.name, 'coverage')
       #   uses: codecov/codecov-action@v3
